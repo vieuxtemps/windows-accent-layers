@@ -6,7 +6,9 @@
 
 Windows Accent Layers enables macOS-style input of diacritics/accented characters and other special symbols on Windows, without the need for swapping your current keyboard layout. You can also easily customize or create new layouts with simple, single-line definitions.
 
-With [suffix layers](#suffix), an alternative typing method not available in either Windows or macOS by default, you can achieve maximum typing speed in multiple languages while not having to switch out of the US layout at all, and without having to press Alt keys. It works similarly to the US-International layout on Windows, but with the advantage of being completely customizable and not blocking input when modifiers are pressed.
+With [prefix layers](#prefix), an alternative typing method not available in either Windows or macOS by default, you can achieve maximum typing speed in multiple languages while not having to switch out of the US layout at all, and without having to press Alt keys. It works similarly to the US-International layout on Windows, but with the advantage of being completely customizable and not blocking input when modifiers are pressed.
+
+For the fastest multilingual typing experience possible with a minimal amount of keypresses, setting up a prefix-based layout with [prefix timeouts](#) is recommended.
 
 <p align="center">
   <img src="demo.gif" />
@@ -72,58 +74,59 @@ MAP !+/ => ¿
 MAP >!c => ç
 ```
 
-### SUFFIX
-<a name="suffix"></a>
-This command effectively works like modifiers in the US-International layout on Windows, but the advantage of immediately sending the suffix key.
+### PREFIX
+<a name="prefix"></a>
+This command effectively works like modifiers in the US-International layout on Windows, but the advantage of immediately sending the prefix key.
 
 For instance, typing `'` with US-International would lock input until the next character is sent. However, if you wanted to simply type `'` into a text document, you would then have to input `Space`, which is highly undesirable in many situations. This is specially useful if you use any application that requires the modifier keys to be immediately sent to preserve normal functionality (e.g. vim).
 
-Example definition for an acute suffix layer with trigger/suffix `'`:
+Example definition for an acute prefix layer with trigger/prefix `'`:
 
 ```
-SUFFIX ' => aá eé ií oó uú AÁ EÉ IÍ OÓ UÚ
+PREFIX ' => aá eé ií oó uú AÁ EÉ IÍ OÓ UÚ
 ```
 
 You can then type `'a` to produce `á`, or `'e` to produce `é`, and so forth.
 
 Notes:
-- For suffix definitions, prefer using single character suffixes instead of Shift combinations (for example, use `{` instead of `+[`, even though they technically mean the same thing if using the US layout).
-- This is implemented using [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm), which means that a backspace is sent to delete the suffix character.
+- For prefix definitions, prefer using single character prefixes instead of Shift combinations (for example, use `{` instead of `+[`, even though they technically mean the same thing if using the US layout).
+- This is implemented using [hotstrings](https://www.autohotkey.com/docs/v1/Hotstrings.htm), which means that a backspace is sent to delete the prefix character.
 - Since a backspace is sent, keep in mind that this can lead to unexpected behaviors in some applications. As an example, if you were inside a directory in Windows Explorer and typed `[a` while not editing text, a backspace character would be sent, placing you in the previous directory.
-- Despite its drawbacks, the `SUFFIX` command can lead to the fastest typing speed for some languages, without the need for swapping layouts, and is the recommended input mode for maximum speed. If you are not comfortable with auto replacements and backspacing, stick with layers and maps.
+- Despite its drawbacks, the `PREFIX` command can lead to the fastest typing speed for some languages, without the need for swapping layouts, and is the recommended input mode for maximum speed. If you are not comfortable with auto replacements and backspacing, stick with layers and maps.
 
-Here is a demonstration of how this looks like in practice (using a clone of the US-International layout, `us-international-suffix.txt`):
+Here is a demonstration of how this looks like in practice (using a clone of the US-International layout, `us-international-prefix.txt`):
 
 <p align="center">
-  <img src="demo-suffix.gif" />
+  <img src="demo-prefix.gif" />
 </p>
 
 Inside a text editor, the result is visually similar to using `Option` layers in macOS, but with less keypresses.
 
-You can also get creative with suffixes:
+You can also get creative with prefixes:
 
 ```
-SUFFIX $ => e€ p£
+PREFIX $ => e€ p£
 ```
 
 In this case, typing `$e` would produce `€`, and `$p` would produce `£`. Another example with dashes:
 
 ```
-SUFFIX - => _– -— =―
+PREFIX - => _– -— =―
 ```
 
 In this case, typing `-_` would produce `–` (en-dash), typing `--` would produce `—` (em-dash), and typing `-=` would produce `―` (horizontal bar).
 
-### Suffix confirmation/cancellation modes
+### Prefix confirmation/cancellation modes
 
-Suffix substitutions are automatically cancelled if there is not a corresponding suffix layer definition for the next character that is typed. However, if the character is defined within the layer, there are 4 different ways to set cancellation behavior, listed below:
+Prefix substitutions are automatically cancelled if there is not a corresponding prefix layer definition for the next character that is typed. However, if the character is defined within the layer, there are 4 different ways to set cancellation behavior, listed below:
 
-- `0`: Don't cancel — This will replace suffixes even if you press Space many times and go back to the same position with Backspace.
-- `1`: Cancel on Space — This will cancel the last suffix whenever you press Space. For instance, if you wanted to type the string `'a'` (with quotes) while having a suffix acute layer active (which would replace `'a` with `á`), you could type `'`, then `Space`, then `Backspace`, then a.
-- `2`: Space to confirm suffix character — To accomplish the same thing as in the previous example, you could type `'`, then `Space`, then `a`.
-- `3`: Double suffix to confirm suffix (default, recommended) — Press the suffix twice to confirm the suffix (you would press `""` in the example above). You don't need to press the suffix twice if the next character typed is not present in the layer (in the demo above, you can notice that `"quotes"` is typed without any Space input, while `"input"` required `"` to be pressed twice). If a double suffix is present in the suffix layer definition (e.g. double dash for em-dash), the definition within the layer has higher priority. This is the most intuitive option and is the recommended option for new users.
+- `0`: Don't cancel — This will replace prefixes even if you press Space many times and go back to the same position with Backspace.
+- `1`: Cancel on Space — This will cancel the last prefix whenever you press Space. For instance, if you wanted to type the string `'a'` (with quotes) while having a prefix acute layer active (which would replace `'a` with `á`), you could type `'`, then `Space`, then `Backspace`, then a.
+- `2`: Space to confirm prefix character — To accomplish the same thing as in the previous example, you could type `'`, then `Space`, then `a`.
+- `3`: Double prefix to confirm prefix (default, **recommended**) — Press the prefix twice to confirm the prefix (you would press `""` in the example above). You don't need to press the prefix twice if the next character typed is not present in the layer (in the demo above, you can notice that `"quotes"` is typed without any Space input, while `"input"` required `"` to be pressed twice). If a double prefix is present in the prefix layer definition (e.g. double dash for em-dash), the definition within the layer has higher priority. Considering the em-dash example, it would send an em-dash instead of confirming the prefix. This is the most intuitive option and is the recommended option for new users.
+- `4`: Prefix timeouts (**recommended**) — The prefix will timeout after `PREFIX_TIMEOUT` seconds (default: 0.3s). Using this option is highly recommended for fast typing with no additional keypresses, but will require some fine-tuning for your typing speed and is therefore not enabled by default. If a double prefix is present in the prefix layer definition (e.g. double dash for em-dash), the prefix will not timeout and is only cancellable with Space.
 
-Although you may use the above documentation for reference, keep in mind that the easiest way to understand suffix cancellation behavior is trying to use one of the options for your daily typing and see what fits your needs.
+Although you may use the above documentation for reference, keep in mind that the easiest way to understand prefix cancellation behavior is trying to use one of the options for your daily typing and see what fits your needs.
 
 ## Hotkeys
 
