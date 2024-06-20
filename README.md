@@ -128,6 +128,19 @@ Prefix substitutions are automatically cancelled if there is not a corresponding
 
 Although you may use the above documentation for reference, keep in mind that the easiest way to understand prefix cancellation behavior is trying to use one of the options for your daily typing and see what fits your needs.
 
+### PREFIXMAP
+This command simply registers a normal hotstring, the same way MAP registers a normal hotkey. If a prefix is typed, the entire string in DATA will be sent. 
+
+This command should probably be avoided in most cases and is only available for completion and dealing with edge-cases for some languages. Prefixes registered with this command are only cancellable with Space (if and only if `PREFIX_CANCEL_MODE` is set to higher than `0`). If your keymap has a normal PREFIX layer that would conflict with your PREFIXMAP, declare the PREFIXMAP command before any PREFIX layer definitions. Examples:
+
+```
+; Simulate physical key position/behavior for portuguese layouts when typing 'çã' (3 keypresses needed instead of 4)
+PREFIXMAP ;'a => çã
+
+; Registers Apple users' most beloved autocompletion
+PREFIXMAP omw => On my way!
+```
+
 ## Hotkeys
 
 This application uses AutoHotkey's [syntax](https://www.autohotkey.com/docs/v1/Hotkeys.htm#Symbols) for defining hotkeys. In case you are not familiar with it, here are the most important keys:
