@@ -136,23 +136,9 @@ This application uses AutoHotkey's [syntax](https://www.autohotkey.com/docs/v1/H
 - `<` is a modifier for `left` (for instance, `<^` means `LeftCtrl`)
 - `>` is a modifier for `right` (for instance, `>^` means `RightCtrl`)
 
-# Options
-The `options.ini` definition syntax is:
+# Running automatically at startup
 
-```
-[Options]
-; Active keymap (relative to /keymaps)
-ACTIVE_KEYMAP=macOS.txt
-
-; Layer timeout in seconds (use 0 to wait forever)
-TIMEOUT=0.8
-
-; Set to 1 to hide the tray icon
-HIDE_TRAY_ICON=0
-
-; Ignore apps (comma-separated, uncomment to enable)
-IGNORE_WHEN_ACTIVE=notepad.exe,chrome.exe
-```
+If you wish this application to run automatically at startup, press `Windows+R` to open the Run window, type `shell:startup` to open your current user's startup folder and create a shortcut for windows-accent-layers.ahk or windows-accent-layers.exe there. Note: if you are using this application to interact with other applications running with elevated/administrator privileges, this application must run with administrator privileges as well, otherwise inputs will be ignored when such applications are focused.
 
 # Installation and usage
 You can either download and execute the script directly with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01), or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.01, and will not run with AutoHotkey v2.
