@@ -11,7 +11,7 @@ Windows Accent Layers enables macOS-style input of diacritics/accented character
 </p>
 
 # Accent Layers
-This tool is based on the concept of using a hotkey to activate a layer, then inputting a single character to generate an accented or special character. This is one of the methods for quickly typing such characters on macOS (see [[1]](https://support.apple.com/en-is/guide/mac-help/mh27474/mac) and [[2]](https://www.reed.edu/it/help/diacritics.html) for more information).
+This tool is based on the concept of using a hotkey to activate a layer, then inputting a single character to generate an accented or special character. This is one of the methods for quickly typing such characters on macOS (see [[1]](https://support.apple.com/en-is/guide/mac-help/mh27474/mac)[[2]](https://www.reed.edu/it/help/diacritics.html) for more information).
 
 For instance, to produce `é` on macOS, you would press `Option+e`, followed by `e`. To achieve the same with windows-accent-layers, you would press `Alt+e`, followed by `e`. Such definitions are completely customizable and easy to edit. A layer for acute accents (with `Alt+e` activation) can be defined as follows:
 ```
@@ -56,7 +56,7 @@ MAP >!c => ç
 After a layer is activated, sends a character after a timer runs out (the default timeout is `0.8s`, and can be turned off). This command is optional. Example:
 
 ```
-; Sets a TIMEOUT command for layer !u (sends `¨` after timeout)
+; Sets a TIMEOUT command for layer !u (sends ¨ after timeout)
 TIMEOUT !u => ¨
 ```
 
