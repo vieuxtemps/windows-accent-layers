@@ -8,7 +8,7 @@ Windows Accent Layers enables macOS-style input of diacritics/accented character
 
 With [prefix layers](#prefix), an alternative typing method not available in either Windows or macOS by default, you can achieve maximum typing speed in multiple languages while not having to switch out of the US layout at all, and without having to press Alt keys. It works similarly to the US-International layout on Windows, but with the advantage of being completely customizable and not blocking input when modifiers are pressed.
 
-For the fastest multilingual typing experience possible with a minimal amount of keypresses, setting up a prefix-based layout with [prefix timeouts](#) is recommended.
+For the fastest multilingual typing experience possible with a minimal amount of keypresses, setting up a prefix-based layout with [prefix timeouts](#ptimeout) is recommended.
 
 <p align="center">
   <img src="demo.gif" />
@@ -117,7 +117,7 @@ PREFIX - => _– -— =―
 In this case, typing `-_` would produce `–` (en-dash), typing `--` would produce `—` (em-dash), and typing `-=` would produce `―` (horizontal bar).
 
 ### Prefix confirmation/cancellation modes
-
+<a name="ptimeout"></a>
 Prefix substitutions are automatically cancelled if there is not a corresponding prefix layer definition for the next character that is typed. However, if the character is defined within the layer, there are 4 different ways to set cancellation behavior, listed below:
 
 - `0`: Don't cancel — This will replace prefixes even if you press Space many times and go back to the same position with Backspace.
@@ -134,7 +134,8 @@ This command simply registers a normal hotstring, the same way MAP registers a n
 This command should probably be avoided in most cases and is only available for completion and dealing with edge-cases for some languages. Prefixes registered with this command are only cancellable with Space (if and only if `PREFIX_CANCEL_MODE` is set to higher than `0`). If your keymap has a normal PREFIX layer that would conflict with your PREFIXMAP, declare the PREFIXMAP command before any PREFIX layer definitions. Examples:
 
 ```
-; Simulate physical key position/behavior for portuguese layouts when typing 'çã' (3 keypresses needed instead of 4)
+; Simulate physical key position/behavior for portuguese layouts when typing 'çã'
+; (3 keypresses are needed, instead of 4)
 PREFIXMAP ;'a => çã
 
 ; Registers Apple users' most beloved autocompletion
