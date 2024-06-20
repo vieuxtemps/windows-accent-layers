@@ -153,9 +153,11 @@ This application uses AutoHotkey's [syntax](https://www.autohotkey.com/docs/v1/H
 - `<` is a modifier for `left` (for instance, `<^` means `LeftCtrl`)
 - `>` is a modifier for `right` (for instance, `>^` means `RightCtrl`)
 
-# Running automatically at startup
+# Permissions, security and running automatically at startup
 
-If you wish this application to run automatically at startup, press `Windows+R` to open the Run window, type `shell:startup` to open your current user's startup folder and create a shortcut for windows-accent-layers.ahk or windows-accent-layers.exe there. Note: if you are using this application to interact with other applications running with elevated/administrator privileges, this application must run with administrator privileges as well, otherwise inputs will be ignored when such applications are focused.
+Some applications running with elevated privileges (such Task Manager, Windows Settings and other system tools) will completely ignore external input from an application being run with normal privileges. Run this application as administrator if you wish to send input to such applications.
+
+If you wish this application to run automatically at startup (with or without elevated privileges), or if you are concerned about security (false positives), see the [shared project documentation](https://github.com/vieuxtemps/ahk-shared-docs).
 
 # Installation and usage
 You can either download and execute the script directly with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01), or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.01, and will not run with AutoHotkey v2.
