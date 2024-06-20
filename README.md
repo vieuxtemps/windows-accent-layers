@@ -175,6 +175,9 @@ You can either download and execute the script directly with [AutoHotkey v1](htt
 - Set your selected keymap and other options on `options.ini`.
 - Activate a layer to type special characters.
 
+## Interoperability with neo-mousekeys
+If you use [neo-mousekeys](https://github.com/vieuxtemps/neo-mousekeys), enable `NEOMOUSEKEYS_SUPPORT=1` to avoid hotkey conflicts while neo-mousekeys is active.
+
 # Troubleshooting
 In case you encounter any issues with garbage characters after editing keymap definitions, make sure you are saving them with UTF-16 LE encoding. Other character encodings, such as UTF-8, UTF-8 with BOM and UTF-16 BE will most likely produce garbage characters. Make sure you are also using a Unicode version of AutoHotkey.
 
