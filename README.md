@@ -4,7 +4,11 @@
   <img src="icon.ico" />
 </p>
 
-Windows Accent Layers enables macOS-style input of diacritics/accented characters and other special symbols on Windows, without the need for swapping your current keyboard layout.
+Windows Accent Layers enables macOS-style input of diacritics/accented characters and other special symbols on Windows, without the need for swapping your current keyboard layout. You can also easily customize or create new layouts with one-line definitions.
+
+<p align="center">
+  <img src="demo.gif" />
+</p>
 
 # Accent Layers
 This tool is based on the concept of using a hotkey to activate a layer, then inputting a single character to generate an accented or special character. This is one of the methods for quickly typing such characters on macOS (see [[1]](https://support.apple.com/en-is/guide/mac-help/mh27474/mac) and [[2]](https://www.reed.edu/it/help/diacritics.html) for more information).
@@ -93,7 +97,6 @@ HIDE_TRAY_ICON=0
 IGNORE_WHEN_ACTIVE=notepad.exe,chrome.exe
 ```
 
-
 # Installation and usage
 You can either download and execute the script directly with [AutoHotkey v1](https://github.com/AutoHotkey/AutoHotkey/releases/tag/v1.1.37.01), or download and execute the pre-compiled binaries. This code was only tested with AutoHotkey v1.1.37.01, and will not run with AutoHotkey v2.
 
@@ -106,7 +109,7 @@ You can either download and execute the script directly with [AutoHotkey v1](htt
 - Open **windows-accent-layers.exe**.
 
 ## Usage
-- Browser and select a keymap found at `/keymaps`, or make your own.
+- Browse and select a keymap from the `/keymaps` directory, or make your own.
 - Set your selected keymap and other options on `options.ini`.
 - Activate a layer to type special characters.
 
